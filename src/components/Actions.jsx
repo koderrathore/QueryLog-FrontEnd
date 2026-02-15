@@ -36,6 +36,8 @@ const Actions = ({ post }) => {
     queryFn: fetchSavedPosts,
   });
 
+  console.log(savedPosts)
+
   const savePostsMutation = useMutation({
     mutationFn: async () => {
       const token = await getToken();
@@ -186,7 +188,7 @@ const Actions = ({ post }) => {
 
               savedPosts?.posts &&
               savedPosts?.posts?.some(
-                (have) => have._id.toString() === post?._id,
+                (have) => have?._id?.toString() == post?._id,
               ) ? (
                 <>
                   <Bookmark fill="black" className=" cursor-pointer" />

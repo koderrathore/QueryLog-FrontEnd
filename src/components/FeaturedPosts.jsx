@@ -23,6 +23,8 @@ const FeaturedPosts = () => {
   console.log(error);
 
   const feature = data?.posts;
+  if(isLoading) return <div>Loading Featured Posts...</div>
+  if(error) return <div>Something went wrong</div>
   return (
     <div className=" flex flex-col md:flex-row md:gap-4 lg:gap-28 pb-4 ">
       {feature && feature.length > 0 ? (
