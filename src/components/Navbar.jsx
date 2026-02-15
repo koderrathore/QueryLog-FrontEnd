@@ -11,7 +11,9 @@ const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const navigate = useNavigate();
   return (
-    <div className={`flex justify-between items-center py-4 border-b h-16 ${menuOpen ? "overflow-hidden max-h-dvh" : ""}`}>
+    <div
+      className={`flex justify-between items-center py-4 border-b h-16 ${menuOpen ? "overflow-hidden max-h-dvh" : ""}`}
+    >
       <Link
         to={"/"}
         className="flex gap-1 cursor-pointer items-center overflow-x-hidden"
@@ -33,9 +35,18 @@ const Navbar = () => {
           <Link to={"/"} className="hover:border-b cursor-pointer">
             Home
           </Link>
-          <Link className="hover:border-b cursor-pointer">Trending</Link>
-          <Link className="hover:border-b cursor-pointer">Most Popular</Link>
-          <Link className="hover:border-b cursor-pointer">About</Link>
+          <Link
+            to={"mailto:rathorekanhaa740@gmail.com"}
+            className="hover:border-b cursor-pointer mr-4 font-semibold"
+          >
+            Contacts
+          </Link>
+          <Link
+            to={"https://www.linkedin.com/in/kunal-rathore-765a1731b"}
+            className="hover:border-b cursor-pointer mr-4 font-semibold"
+          >
+            About
+          </Link>{" "}
           <SignedOut>
             <button
               onClick={() => navigate("/login")}
@@ -57,13 +68,17 @@ const Navbar = () => {
         >
           Home
         </Link>
-        <Link className="hover:border-b cursor-pointer mr-4 font-semibold">
-          Trending
+        <Link
+          to={"mailto:rathorekanhaa740@gmail.com"}
+            className="hover:border-b cursor-pointer mr-4 font-semibold"
+        >
+          Contacts
         </Link>
-        <Link className="hover:border-b cursor-pointer mr-4 font-semibold">
-          Most Popular
-        </Link>
-        <Link className="hover:border-b cursor-pointer mr-4 font-semibold">
+
+        <Link
+          to={"https://www.linkedin.com/in/kunal-rathore-765a1731b"}
+          className="hover:border-b cursor-pointer mr-4 font-semibold"
+        >
           About
         </Link>
         <SignedOut>
