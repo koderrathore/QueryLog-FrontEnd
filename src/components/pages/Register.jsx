@@ -5,6 +5,7 @@ const Register = () => {
   return (
     <div className='flex justify-center items-center h-dvh'>
       <SignUp signInUrl='/login'/>
+
     </div>
   )
 }

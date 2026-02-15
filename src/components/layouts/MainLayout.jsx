@@ -7,7 +7,7 @@ const MainLayout = () => {
 
   return (
     <div className={`px-4 md:px-12 lg:px-32 ${menuOpen ? "max-h-dvh overflow-hidden" : ""}`}>
-      <Navbar menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
+      <Navbar menuOpen={menuOpen} setMenuOpen={setMenuOpen}/>
       <Outlet />
     </div>
   );

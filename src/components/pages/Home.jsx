@@ -6,9 +6,12 @@ import PostList from "./PostList";
 import { Navigate, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useQuery } from "@tanstack/react-query";
+import { useUser } from "@clerk/clerk-react";
 
 const Home = () => {
   const navigate = useNavigate();
+  const { isSignedIn } = useUser();
+console.log(isSignedIn)
   const fetchPosts = async () => {
     const res = await axios.get(`${import.meta.env.VITE_API_URL}/posts`);
     return res.data;
@@ -49,7 +52,15 @@ const Home = () => {
             Lorem, ipsum dolor sit amet consectetur adipisicing elit.
           </p>
         </div>
-        <div onClick={() => navigate("/write")} className="hidden md:block">
+        <div
+          onClick={() => {
+            if(!isSignedIn){
+              return navigate("/login")
+            }
+            navigate("/write");
+          }}
+          className="hidden md:block"
+        >
           <div className="rounded-full w-fit p-4 h-fit flex items-center justify-center bg-blue-700 border-2 border-white mt-8 md:mt-0 hover:border-gray-800">
             <MoveUpRight className="w-20 h-20 lg:w-24 lg:h-24" />
           </div>
@@ -60,7 +71,7 @@ const Home = () => {
       </div>
       {/* CATEGORIES  */}
       <Categories />
-      
+
       {/* FEATURED POSTS  */}
       <FeaturedPosts />
       {/* POST LISTS */}
