@@ -72,7 +72,7 @@ const PostList = () => {
 
   return (
     <div className="flex gap-6 md:gap-4 lg:gap-8 pb-4">
-      <div className="flex flex-col gap-2 md:gap-4 lg:gap-8">
+      <div className="flex flex-col gap-2 md:gap-4 lg:gap-8 ">
         {allPosts && allPosts?.length > 0 ? (
           location?.pathname === "/posts" ? (
             <div className="md:hidden flex flex-col my-2">
@@ -282,11 +282,27 @@ const PostList = () => {
                 </div>
               ))
             ) : (
-              <div>No Posts yet!</div>
+              <div className="flex flex-col gap-4 mt-6 flex-1">
+                <h1 className="text-2xl">No Posts Yet!</h1>
+                <Link
+                  to={"/"}
+                  className=" flex justify-center items-center p-2 text-xl hover:text-white bg-blue-600 hover:bg-blue-500 rounded-xl shadow-2xl"
+                >
+                  <button>Back to Home</button>
+                </Link>
+              </div>
             )}
           </InfiniteScroll>
         ) : (
-          ""
+          <div className="flex flex-col gap-4 mt-6 flex-1">
+            <h1 className="text-2xl">No Results Found!</h1>
+            <Link
+              to={"/"}
+              className=" flex justify-center items-center p-2 text-xl hover:text-white bg-blue-600 hover:bg-blue-500 rounded-xl shadow-2xl"
+            >
+              <button>Back to Home</button>
+            </Link>
+          </div>
         )}
       </div>
 
