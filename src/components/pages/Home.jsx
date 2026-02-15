@@ -11,7 +11,7 @@ import { useUser } from "@clerk/clerk-react";
 const Home = () => {
   const navigate = useNavigate();
   const { isSignedIn } = useUser();
-console.log(isSignedIn)
+  console.log(isSignedIn);
   const fetchPosts = async () => {
     const res = await axios.get(`${import.meta.env.VITE_API_URL}/posts`);
     return res.data;
@@ -44,18 +44,17 @@ console.log(isSignedIn)
       {/* INTRODUCTION */}
       <div className="flex gap-4 items-center md:items-start">
         <div className="flex flex-col gap-2">
-          <div className="font-bold text-xl md:text-4xl lg:text-6xl text-gray-800 lg:pr-4">
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+          <div className="font-bold text-xl md:text-4xl lg:text-6xl text-gray-800 lg:pr-8">
+            Because great stories exist beyond just one category.{" "}
           </div>
-          <p className="lg:text-xl">
+          <p className="md:text-xl lg:mt-2">
             {" "}
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-          </p>
+From tech to television, share the stories that matter to you.          </p>
         </div>
         <div
           onClick={() => {
-            if(!isSignedIn){
-              return navigate("/login")
+            if (!isSignedIn) {
+              return navigate("/login");
             }
             navigate("/write");
           }}

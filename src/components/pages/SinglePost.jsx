@@ -10,6 +10,7 @@ import { useState } from "react";
 import { useAuth } from "@clerk/clerk-react";
 import { toast } from "react-toastify";
 import PostActions from "../PostActions";
+import Actions from "../Actions";
 
 const SinglePost = () => {
   const [comment, setComment] = useState("");
@@ -76,10 +77,10 @@ const SinglePost = () => {
   if (isLoading) return <div>loading...</div>;
   if (!data?.post) return <div>Something went wrond!</div>;
   return (
-    <div className="flex relative items-start">
+    <div className="items-start flex relative h-max">
       <div className="flex flex-col gap-4 lg:gap-8 py-4">
         <div className="md:hidden">
-          <PostActions post={data?.post} />
+          <Actions post={data?.post}/>
         </div>
         <div className="flex flex-col md:flex-row gap-8 items-center justify-center">
           <div className="flex flex-col gap-4 w-full">

@@ -1,5 +1,13 @@
 import React, { useState } from "react";
-import { Figma, TextAlignJustify, X } from "lucide-react";
+import {
+  Bookmark,
+  Figma,
+  LucideSave,
+  SaveAll,
+  SaveIcon,
+  TextAlignJustify,
+  X,
+} from "lucide-react";
 import { Link, Navigate, useNavigate } from "react-router-dom";
 import {
   SignedIn,
@@ -12,7 +20,7 @@ const Navbar = () => {
   const navigate = useNavigate();
   return (
     <div
-      className={`flex justify-between items-center py-4 border-b h-16 ${menuOpen ? "overflow-hidden max-h-dvh" : ""}`}
+      className={`flex justify-between items-center py-4 border-b h-16 ${menuOpen ? " max-h-dvh" : ""}`}
     >
       <Link
         to={"/"}
@@ -22,6 +30,7 @@ const Navbar = () => {
         <span className="font-bold text-2xl">QueryBlog</span>
       </Link>
       {/* MOBILE MENU */}
+
       <div className="md:hidden">
         <div
           className="cursor-pointer"
@@ -30,20 +39,26 @@ const Navbar = () => {
           {menuOpen ? <X /> : <TextAlignJustify />}
         </div>
         <div
-          className={`text-2xl flex flex-col items-center justify-center pb-32 gap-6 absolute top-16 w-full h-screen overflow-x-hidden transition-all ease-in-out duration-200 ${menuOpen ? "-right-0 z-50  bg-[rgb(219_197_219)] max-h-dvh overflow-hidden" : "-right-[100%]"}`}
+          className={` items-center text-xl flex justify-around py-4 px-2 absolute top-16 w-full h-fit overflow-x-hidden transition-all ease-in-out duration-200 ${menuOpen ? "-right-0 z-50  bg-[rgb(179,153,179)] max-h-fit overflow-hidden" : "-right-[100%]"}`}
         >
-          <Link to={"/"} className="hover:border-b cursor-pointer">
+          <Link
+            to={"/"}
+            onClick={() => {
+              setMenuOpen((prev) => !prev);
+            }}
+            className="hover:border-b cursor-pointer font-semibold"
+          >
             Home
           </Link>
           <Link
             to={"mailto:rathorekanhaa740@gmail.com"}
-            className="hover:border-b cursor-pointer mr-4 font-semibold"
+            className="hover:border-b cursor-pointer font-semibold"
           >
-            Contacts
+            Contact
           </Link>
           <Link
             to={"https://www.linkedin.com/in/kunal-rathore-765a1731b"}
-            className="hover:border-b cursor-pointer mr-4 font-semibold"
+            className="hover:border-b cursor-pointer font-semibold"
           >
             About
           </Link>{" "}
@@ -55,8 +70,14 @@ const Navbar = () => {
               Login
             </button>
           </SignedOut>
-          <SignedIn>
+          <SignedIn className="flex gap-2">
             <UserButton />
+            <Link
+              to={"/saved-posts"}
+              onClick={() => setMenuOpen((prev) => !prev)}
+            >
+              <Bookmark fill="black" className="hover:fill-slate-600" />
+            </Link>{" "}
           </SignedIn>
         </div>
       </div>
@@ -70,9 +91,9 @@ const Navbar = () => {
         </Link>
         <Link
           to={"mailto:rathorekanhaa740@gmail.com"}
-            className="hover:border-b cursor-pointer mr-4 font-semibold"
+          className="hover:border-b cursor-pointer mr-4 font-semibold"
         >
-          Contacts
+          Contact
         </Link>
 
         <Link
@@ -89,8 +110,11 @@ const Navbar = () => {
             Login
           </button>
         </SignedOut>
-        <SignedIn>
+        <SignedIn className="flex gap-2">
           <UserButton />
+          <Link to={"/saved-posts"}>
+            <Bookmark fill="black" className="hover:fill-slate-600" />
+          </Link>
         </SignedIn>
       </div>
     </div>

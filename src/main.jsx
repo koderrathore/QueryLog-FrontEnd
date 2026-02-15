@@ -16,6 +16,7 @@ import MainLayout from "./components/layouts/MainLayout";
 import { ClerkProvider } from "@clerk/clerk-react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ToastContainer } from "react-toastify";
+import SavedPosts from "./components/pages/SavedPosts";
 
 const PUBLISHABLE_KEY = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY;
 
@@ -44,6 +45,10 @@ const router = createBrowserRouter([
       {
         path: "/write",
         element: <Write />,
+      },
+      {
+        path: "/saved-posts",
+        element: <SavedPosts />,
       },
     ],
   },
