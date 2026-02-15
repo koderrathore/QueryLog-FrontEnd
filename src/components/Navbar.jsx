@@ -39,7 +39,7 @@ const Navbar = () => {
           {menuOpen ? <X /> : <TextAlignJustify />}
         </div>
         <div
-          className={` items-center text-xl flex justify-around py-4 px-2 absolute top-16 w-full h-fit overflow-x-hidden transition-all ease-in-out duration-200 ${menuOpen ? "-right-0 z-50  bg-[rgb(179,153,179)] max-h-fit overflow-hidden" : "-right-[100%]"}`}
+          className={` items-center text-xl flex justify-around py-4 px-2 absolute top-16 w-full h-12 overflow-hidden transition-all ease-in-out duration-500 left-0 bg-[rgb(179,153,179)] ${menuOpen?"block":"hidden"}`}
         >
           <Link
             to={"/"}

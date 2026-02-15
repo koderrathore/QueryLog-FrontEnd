@@ -26,10 +26,14 @@ const PostList = () => {
 
     console.log(searchObj.sort);
 
-    if (searchObj.sort) {
-      setSelectedFilter(searchObj.sort);
+    if (selectedFilter) {
+      setSearchParams({
+        ...Object.fromEntries(searchParams),
+        sort: selectedFilter,
+      });
     } else {
-      setSelectedFilter(null);
+      searchParams.delete("sort");
+      setSearchParams({ ...Object.fromEntries(searchParams) });
     }
 
     const res = await axios.get(`${import.meta.env.VITE_API_URL}/posts`, {
@@ -47,7 +51,7 @@ const PostList = () => {
     isFetchingNextPage,
     status,
   } = useInfiniteQuery({
-    queryKey: ["posts", searchParams?.toString()],
+    queryKey: ["posts", searchParams?.toString(), selectedFilter],
     queryFn: ({ pageParam = 1 }) => fetchPosts(pageParam, searchParams),
     initialPageParam: 1,
     getNextPageParam: (lastPage, pages) =>
@@ -55,6 +59,7 @@ const PostList = () => {
   });
 
   if (status === "pending") return <div>Loading...</div>;
+  console.log(error);
   if (error) return <div>Something went wrong</div>;
 
   console.log(error);
@@ -109,10 +114,6 @@ const PostList = () => {
                           setSelectedFilter(
                             selectedFilter === "newest" ? null : "newest",
                           );
-                          setSearchParams({
-                            ...Object.fromEntries(searchParams),
-                            sort: "newest",
-                          });
                         }}
                         className="w-4 h-4 appearance-none border-2 bg-white border-blue-600 checked:bg-blue-600"
                       />
@@ -126,10 +127,6 @@ const PostList = () => {
                           setSelectedFilter(
                             selectedFilter === "popular" ? null : "popular",
                           );
-                          setSearchParams({
-                            ...Object.fromEntries(searchParams),
-                            sort: "popular",
-                          });
                         }}
                         className="w-4 h-4 appearance-none border-2 bg-white border-blue-600 checked:bg-blue-600"
                       />
@@ -144,10 +141,6 @@ const PostList = () => {
                           setSelectedFilter(
                             selectedFilter === "oldest" ? null : "oldest",
                           );
-                          setSearchParams({
-                            ...Object.fromEntries(searchParams),
-                            sort: "oldest",
-                          });
                         }}
                         className="w-4 h-4 appearance-none border-2 bg-white border-blue-600 checked:bg-blue-600"
                       />
