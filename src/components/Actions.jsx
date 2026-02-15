@@ -134,7 +134,7 @@ const Actions = ({ post }) => {
   });
 
   return (
-      <div className="flex h-max justify-between md:flex-col md:gap-8 md:mt-8 sticky md:relative -z-10">
+      <div className="flex h-max justify-between md:flex-col md:gap-8 md:mt-8 sticky md:relative z-10">
         <span className="hidden md:block font-semibold lg:text-xl">Actions</span>
         {isAdimn ? (
           <div
