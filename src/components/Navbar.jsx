@@ -20,7 +20,7 @@ const Navbar = () => {
   const navigate = useNavigate();
   return (
     <div
-          className={` items-center text-xl flex justify-around py-4 px-2 absolute top-16 w-full h-12 overflow-hidden transition-all ease-in-out duration-500 left-0 bg-[rgb(179,153,179)] ${menuOpen?"block":"hidden"}`}
+      className={`flex justify-between items-center py-4 border-b h-16 ${menuOpen ? " max-h-dvh" : ""}`}
     >
       <Link
         to={"/"}
