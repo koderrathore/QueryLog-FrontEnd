@@ -2,9 +2,7 @@ import React, { useState } from "react";
 import {
   Bookmark,
   Figma,
-  LucideSave,
-  SaveAll,
-  SaveIcon,
+
   TextAlignJustify,
   X,
 } from "lucide-react";
@@ -12,7 +10,6 @@ import { Link, Navigate, useNavigate } from "react-router-dom";
 import {
   SignedIn,
   SignedOut,
-  SignInButton,
   UserButton,
 } from "@clerk/clerk-react";
 const Navbar = () => {
